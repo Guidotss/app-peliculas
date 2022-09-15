@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link,NavLink,Navigate } from 'react-router-dom'; 
 import { Dropdown,DropdownItem,DropdownMenu,DropdownToggle } from 'reactstrap'; 
+import { Form } from '../form/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
@@ -14,6 +15,7 @@ export const NavBar = () => {
         <h2>
           <Link to='/'>GuidFlix</Link>
         </h2>
+        <Form />
         <nav>
           <ul>
             <li>
