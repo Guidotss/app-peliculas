@@ -1,3 +1,6 @@
+form{
+    margin-left: 60px;
+}
 input{
     width: 400px !important;
     height: 55px;
@@ -9,5 +12,5 @@ input{
     height: 55px;
     top: 16px;
     width: 100px;
-    margin-left: 21%;
+    margin-left: 27%;
 }

@@ -1,5 +1,7 @@
+import { CarouselComponent } from '../components/index'; 
+
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <CarouselComponent/>
   )
 }
