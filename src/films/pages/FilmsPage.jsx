@@ -1,5 +1,7 @@
+import { FilmList } from '../index'; 
+
 export const FilmsPage = () => {
   return (
-    <div>FilmsPage</div>
+    <FilmList/>
   )
 }

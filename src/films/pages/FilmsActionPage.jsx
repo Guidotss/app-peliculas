@@ -1,5 +1,5 @@
 export const FilmsActionPage = () => {
   return (
-    <div>FilmsActionPage</div>
+    <h1>actionPage</h1>
   )
 }

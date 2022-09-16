@@ -6,15 +6,18 @@ import './carousel.css'
 const items = [
     {
         src: 'src/assets/avengers.jpg',
-        altText:'imagen avengers'
+        altText:'imagen avengers',
+        caption:'avengers'
     },
     {
         src: 'src/assets/harry-potter.jpg',
-        altText:'imagen harry-potter'
+        altText:'imagen harry-potter',
+        caption:'harry-potter'
     },
     {
         src:'src/assets/the-lord-of-the-rings.jpg',
-        altText:'imagen the-lord-of-the-rings'
+        altText:'imagen the-lord-of-the-rings',
+        caption:'the-lord-of-the-rings'
     }
 ]
 
