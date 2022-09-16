@@ -1,13 +1,13 @@
 input{
     width: 400px !important;
     height: 55px;
-    
+    border: none !important;
 }
 
-button{
+.form-btn{
     position: absolute;
-    margin-left: 405px;
     height: 55px;
-    top: 21px;
+    top: 16px;
     width: 100px;
+    margin-left: 21%;
 }
