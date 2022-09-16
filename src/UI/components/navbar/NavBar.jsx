@@ -27,16 +27,16 @@ export const NavBar = () => {
 
                   <DropdownMenu>
                     <DropdownItem>
-                      <NavLink to='/films/Action'>Action</NavLink>
+                      <NavLink to='/gender/action'>Action</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink to='/films/Adventure'>Adventure</NavLink>
+                      <NavLink to='/gender/adventure'>Adventure</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink to='/films/Animation'>Animation</NavLink>
+                      <NavLink to='/gender/animation'>Animation</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink to='/films/Comedy'>Comedy</NavLink>
+                      <NavLink to='/gender/comedy'>Comedy</NavLink>
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>

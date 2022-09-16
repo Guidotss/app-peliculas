@@ -5,8 +5,8 @@ import './carousel.css'
 
 const items = [
     {
-        src: 'src/assets/Naruto.jpg',
-        altText:'imagen DBZ'
+        src: 'src/assets/avengers.jpg',
+        altText:'imagen avengers'
     },
     {
         src: 'src/assets/harry-potter.jpg',
