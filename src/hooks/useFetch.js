@@ -10,7 +10,6 @@ export const useFetch = () =>{
 
     const getFilms = async ()  =>{
         const data = await getData(); 
-        console.log(data);
         setData(data); 
         setLoading(false); 
     }

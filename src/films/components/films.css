@@ -1,0 +1,22 @@
+
+.films-grid{
+    display: flex;
+    justify-content: center ;
+    flex-wrap: wrap;
+}
+.card-img{
+    width: 320px !important; 
+    object-fit: cover; 
+    object-position: center;
+}
+.card{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 300px;
+    height: 510px! important;
+    text-align: center;
+}
+.card:hover{
+    transform: scale(1.04);
+    transition: 0.5s;
+}
