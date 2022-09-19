@@ -1,5 +1,23 @@
-video{
-    position: absolute;
-    top: 50%;
-    left: 50%;
+
+.film-page{
+    top: 200px;
+    position: relative; 
+}
+
+.film-page-image{
+    width: 500px;
+    border-radius: 20px;
+    margin-left: 15px;
+    margin-top: -70px; 
+}
+
+
+.list-group{
+    border-radius:8px !important;
+    width: 450px;
+    padding: 10px;
+}
+.list-group-item{
+    padding: 20px !important;
+    background-color: #e5e5e5 !important
 }

@@ -5,12 +5,13 @@ input{
     width: 400px !important;
     height: 55px;
     border: none !important;
-}
+} 
+
 
 .form-btn{
-    position: absolute;
     height: 55px;
     top: 16px;
     width: 100px;
-    margin-left: 27%;
+    margin-left: 22%;
+    position: fixed;
 }
