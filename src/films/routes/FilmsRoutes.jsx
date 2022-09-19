@@ -8,11 +8,11 @@ export const FilmsRoutes = () => {
         <Route path='/' element={ <HomePage/> }/>
         <Route path='/films' element={<FilmsPage/>}/>
         <Route path='/film/:title' element={<FilmPage/>}/>
-        <Route path='/gender/action' element={ <FilmsActionPage/> }/>
-        <Route path='/gender/comedy' element={<FilmsComedyPage/>}/>
-        <Route path='/gender/adventure' element={<FilmsAdventurePage/>}/>
-        <Route path='/gender/animation' element={<FilmsAnimationPage/>}/>
-        <Route path='/gender'/>
+        <Route path='/genero/:genero' element={ <FilmsActionPage/> }/>
+        <Route path='/genero/:genero' element={<FilmsComedyPage/>}/>
+        <Route path='/genero/:genero' element={<FilmsAdventurePage/>}/>
+        <Route path='/genero/:genero' element={<FilmsAnimationPage/>}/>
+        <Route path='/genero'/>
     </Routes>
   )
 }

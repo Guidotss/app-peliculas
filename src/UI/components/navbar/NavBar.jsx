@@ -7,11 +7,21 @@ import './navbar.css'
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [color, setColor] = useState(false);
+
+  const changeColor = () =>{
+    if(window.scrollY >= 35){
+      setColor(true)
+    }else{
+      setColor(false)
+    }
+  }
+  window.addEventListener('scroll',changeColor)
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <header>
+    <header className={color ? 'header header-transparent' : 'header header-normal'}>
         <h2>
           <Link to='/'>GuidFlix</Link>
         </h2>
@@ -27,16 +37,16 @@ export const NavBar = () => {
 
                   <DropdownMenu>
                     <DropdownItem>
-                      <NavLink to='/gender/action'>Action</NavLink>
+                      <NavLink to='/genero/accion'>Accion</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink to='/gender/adventure'>Adventure</NavLink>
+                      <NavLink to='/genero/aventura'>Aventura</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink to='/gender/animation'>Animation</NavLink>
+                      <NavLink to='/genero/animacion'>Animacion</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink to='/gender/comedy'>Comedy</NavLink>
+                      <NavLink to='/genero/comedia'>Comedia</NavLink>
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>

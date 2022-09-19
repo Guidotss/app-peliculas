@@ -1,11 +1,17 @@
-header{
+.header{
     display: flex;
     justify-content: space-between;
-    background-color: #33415c;
     padding: 15px;
     position: fixed;
-    z-index: 1;
+    z-index: 99;
     width: 100%;
+}
+.header-normal{
+    background-color: #33415c;
+}
+.header-transparent{
+    background-color: #33415c;
+    opacity: 0.99;
 }
 .dropdown-menu{
     background-color: #33415c;

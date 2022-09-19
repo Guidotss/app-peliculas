@@ -21,3 +21,12 @@
     padding: 20px !important;
     background-color: #e5e5e5 !important
 }
+iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.film{
+    text-align: center;
+    height: 300px;
+}

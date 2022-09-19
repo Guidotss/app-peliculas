@@ -6,19 +6,33 @@ export const FilmPage = () => {
 
   const { title } = useParams();
   const film = getFilmByTitle(title);
-
+  
   if(film === undefined)return; 
-
+  
   const {
-      description,
+    description,
       embedUrls,
       genres,
       image,
       rating,
       release,
   } = film;
-
+  
+  
+  
+  let filmIndex = 0;
   let index = 0; 
+
+  
+
+  for(let i = 0; i < embedUrls.length; i++) {
+    if(embedUrls[i].priority === 5) {
+      filmIndex = i;
+      break;
+    }
+  }
+
+  
 
   return (
     <>
@@ -46,7 +60,10 @@ export const FilmPage = () => {
                   </ul>
               </div>
               <div className='col'>
-                  <iframe src={embedUrls[3].url} frameborder="0"></iframe>
+                  <div className='film'>
+                    <h3 style={{color:"white"}}>Film</h3>
+                    <iframe src={embedUrls[filmIndex].url} frameBorder="0"></iframe>
+                  </div>
               </div>
           </div>
       </section>
