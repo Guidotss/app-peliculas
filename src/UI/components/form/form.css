@@ -12,6 +12,16 @@ input{
     height: 55px;
     top: 16px;
     width: 100px;
-    margin-left: 27%;
+    margin-left: 21%;
     position: fixed;
+}
+@media screen and (max-width: 1679px) {
+    .form-btn{
+        margin-left: 24%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .form-btn{
+        margin-left: 41%;
+    }
 }

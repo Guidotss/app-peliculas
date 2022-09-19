@@ -1,14 +1,20 @@
+import { useNavigate,useLocation } from 'react-router-dom'; 
+import queryString from 'query-string'; 
 import { useForm } from '../../../hooks/index'; 
 import './form.css'
 
 export const Form = () => {
+  
+  const navigate = useNavigate(); 
+  const {q=''} = queryString.parse(useLocation().search);
 
   const { searchInfo,onInputChange,reset } = useForm({
-    searchInfo:'',
+    searchInfo:q,
   });
 
   const onSubmit = (e) => {
     e.preventDefault();
+    navigate(`/search?q=${ searchInfo }`);
     reset();
   }
   

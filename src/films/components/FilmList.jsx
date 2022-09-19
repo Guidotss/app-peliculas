@@ -11,7 +11,7 @@ export const FilmList = () => {
   
   
   const {data,loading} = useFetch(); 
-  console.log(loading);
+  
   if(loading){
     return (
       <div className="d-flex justify-content-center">
