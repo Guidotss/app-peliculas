@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './films.css'
 
 
@@ -20,7 +21,9 @@ export const FilmCard = ({ film }) => {
                       <h3 className='card-title'>{title}</h3>
                     </div>
                   </div>
-                  <button className='btn btn-outline-warning'>Ver mas...</button>
+                  <button className='btn btn-outline-warning'>
+                    <Link to={`/film/${title}`} className='link'>Ver mas...</Link>
+                  </button>
               </div>
           </div>
       </div>

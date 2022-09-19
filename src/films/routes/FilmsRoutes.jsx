@@ -7,7 +7,7 @@ export const FilmsRoutes = () => {
     <Routes>
         <Route path='/' element={ <HomePage/> }/>
         <Route path='/films' element={<FilmsPage/>}/>
-        <Route path='/search/:id' element={<FilmPage/>}/>
+        <Route path='/film/:title' element={<FilmPage/>}/>
         <Route path='/gender/action' element={ <FilmsActionPage/> }/>
         <Route path='/gender/comedy' element={<FilmsComedyPage/>}/>
         <Route path='/gender/adventure' element={<FilmsAdventurePage/>}/>
