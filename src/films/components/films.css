@@ -5,18 +5,35 @@
     flex-wrap: wrap;
 }
 .card-img{
-    width: 320px !important; 
-    object-fit: cover; 
-    object-position: center;
+    width: 300px !important; 
 }
 .card{
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-left: 10px;
     width: 300px;
-    height: 510px! important;
-    text-align: center;
+    height: 520px !important;
+    background-color: #98c1d9 !important;
+    top: 120px;
+    align-items: center;
 }
+.text-container{
+    width: 200px;
+    height: 20px;
+}
+
 .card:hover{
     transform: scale(1.04);
     transition: 0.5s;
+}
+.card-title{
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'oswald'; 
+    font-size: 25px;
+    font-weight: 600;
+}
+.spinner{
+    margin-top: 400px;
 }
