@@ -19,4 +19,10 @@ export interface FilmResult {
   vote_count: number;
   video: boolean;
   vote_average: number;
+  genres: FilmsGenres[]; 
+}
+
+interface FilmsGenres { 
+  id: number; 
+  name: string; 
 }

@@ -1,21 +1,22 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { AxiosAdapter } from 'src/common/adapters/axios.adapter';
-import { Film } from './interfaces/film.interface';
+import { Film, FilmResult } from './interfaces/film.interface';
 
 @Injectable()
 export class FilmsService {
   constructor(private readonly http: AxiosAdapter) {}
 
-  public async findAll() {
+  public async findAll(id:string) {
     try {
       const data = await this.http.get<Film>(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}&language=es-ES&page=1`,
       );
+      if(id){
+        return data.results.map((film:FilmResult) => film.id); 
+      }
       return data.results;
     } catch (error) {
-      throw new InternalServerErrorException(
-        'An error has ocurred while trying to get the films',
-      );
+      this.handleErrors(error);
     }
   }
 
@@ -26,10 +27,25 @@ export class FilmsService {
       );
       return data;
     } catch (error) {
-      console.log(error);
-      throw new InternalServerErrorException(
-        'An error has ocurred while trying to get the film',
-      );
+      this.handleErrors(error);
     }
+  }
+
+  public async findRelatedFilms(id: string) { 
+    try { 
+
+      const data = await this.http.get<Film>(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`)
+      return data.results;
+
+    }catch(error){ 
+      this.handleErrors(error); 
+    }
+  }
+
+  private handleErrors(error: any) {
+    console.log(error);
+    throw new InternalServerErrorException(
+      'An error has ocurred while trying to get the films',
+    );
   }
 }

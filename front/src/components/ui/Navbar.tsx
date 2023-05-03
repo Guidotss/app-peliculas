@@ -1,4 +1,4 @@
-import { DownArrow } from "./DownArrow"
+
 
 export const Navbar = () => {
   return (
