@@ -19,5 +19,4 @@ export class FilmsController {
   findRelatedFilms(@Param('id') id: string) {
     return this.filmsService.findRelatedFilms(id);
   }
-
 }

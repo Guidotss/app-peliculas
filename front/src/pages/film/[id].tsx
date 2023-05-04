@@ -11,7 +11,7 @@ interface FilmPageProps {
 
 const FilmPage: NextPage<FilmPageProps> = ({ film, relatedFilms }) => {
   const topRelatedFilms = relatedFilms.filter(
-    (film: FilmResult) => film.vote_average >= 6.6
+    (film: FilmResult) => film.vote_average >= 7.7
   );
 
   return (
@@ -62,11 +62,11 @@ const FilmPage: NextPage<FilmPageProps> = ({ film, relatedFilms }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { data } = await filmsApi.get("/films?id=1");
-  const path = data.map((id: number) => id);
+  const { data } = await filmsApi.get("/films?id=true");
+  const path = data.map((id: number) => `${id}`);
 
   return {
-    paths: path.map((id: number) => ({ params: { id: id.toString() } })),
+    paths: path.map((id: number) => ({ params: { id } })),
     fallback: "blocking",
   };
 };

@@ -6,12 +6,12 @@ import { Film, FilmResult } from './interfaces/film.interface';
 export class FilmsService {
   constructor(private readonly http: AxiosAdapter) {}
 
-  public async findAll(id:string) {
+  public async findAll(id?:string) {
     try {
       const data = await this.http.get<Film>(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}&language=es-ES&page=1`,
       );
-      if(id){
+      if(id === 'true'){
         return data.results.map((film:FilmResult) => film.id); 
       }
       return data.results;
@@ -33,7 +33,6 @@ export class FilmsService {
 
   public async findRelatedFilms(id: string) { 
     try { 
-
       const data = await this.http.get<Film>(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`)
       return data.results;
 
@@ -41,6 +40,7 @@ export class FilmsService {
       this.handleErrors(error); 
     }
   }
+
 
   private handleErrors(error: any) {
     console.log(error);
