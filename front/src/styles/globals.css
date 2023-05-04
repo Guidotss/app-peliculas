@@ -8,3 +8,13 @@
     transform: scale(1.1);
     transition: 0.5s;
 }
+
+.scroll-bar::-webkit-scrollbar {
+    width: 10px;
+    background-color: #1e293b;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #d9d9d9;
+}

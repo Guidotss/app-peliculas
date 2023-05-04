@@ -19,4 +19,9 @@ export class FilmsController {
   findRelatedFilms(@Param('id') id: string) {
     return this.filmsService.findRelatedFilms(id);
   }
+
+  @Get('trending/movies')
+  getTrending() {
+    return this.filmsService.getTrendingFilms();
+  }
 }

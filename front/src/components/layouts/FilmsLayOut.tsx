@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import { Navbar } from '../ui'; 
+import { useRouter } from 'next/router';
 
 interface FilmsLayOutProps {
     title: string; 
@@ -10,6 +11,11 @@ interface FilmsLayOutProps {
 }
 
 export const FilmsLayOut:FC<FilmsLayOutProps> = ({ title, pageDescription, imageFullUrl, children }) => {
+
+    const router = useRouter();
+
+
+
   return (
     <>
         <Head>

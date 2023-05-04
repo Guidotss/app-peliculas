@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className='bg-slate-800'>
+      <body className='bg-slate-800 scroll-bar '>
         <Main />
         <NextScript />
       </body>

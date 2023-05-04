@@ -1,23 +1,37 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { filmsApi } from "@/api";
-import { Film, FilmResult } from "@/interfaces";
-import { FilmCard } from "@/components/films";
+import { Film, FilmResult, TrendingFilms } from "@/interfaces";
+import { FilmCard, TrendingLists } from "@/components/films";
+import { FilmsLayOut } from "@/components";
+import { useContext, useEffect } from "react";
+import { UiContext } from "@/context";
+
 
 interface FilmPageProps {
   film: FilmResult;
   relatedFilms: FilmResult[];
+  trendingMovies: TrendingFilms; 
 }
 
-const FilmPage: NextPage<FilmPageProps> = ({ film, relatedFilms }) => {
-  const topRelatedFilms = relatedFilms.filter(
-    (film: FilmResult) => film.vote_average >= 7.7
-  );
+const FilmPage: NextPage<FilmPageProps> = ({ film, relatedFilms, trendingMovies }) => {
+
+  const { stopLoading } = useContext(UiContext); 
+
+  useEffect(() => {
+    stopLoading(); 
+  },[]); 
+
+  const topRelatedFilms = relatedFilms?.slice(0, 4);
+  const topTrendingMoviesDay = trendingMovies.trendingDay?.slice(0, 3);
+  const topTrendingMoviesWeek = trendingMovies.trendingWeek?.slice(0, 3);
+
+
 
   return (
-    <div>
+    <FilmsLayOut title={film.title || film.original_name} pageDescription={film.overview}>
       <Image
-        className="shadow-xl w-full h-[80vh] opacity-[0.6] absolute"
+        className="shadow-xl w-full h-[80vh] object-cover opacity-[0.6] absolute"
         src={`https://image.tmdb.org/t/p/w500${film.backdrop_path}`}
         alt={film.title}
         width={500}
@@ -50,14 +64,17 @@ const FilmPage: NextPage<FilmPageProps> = ({ film, relatedFilms }) => {
           </div>
         </div>
       </div>
-      <div className="flex mt-14 gap-5 ml-2"> 
-        {topRelatedFilms.map((film) => (
-            <div key={film.id}> 
-                <FilmCard film={film} />
-            </div>
-        ))}
+      <div className="flex">
+        <div className="flex mt-14 gap-5 ml-2"> 
+          {topRelatedFilms.map((film) => (
+              <div key={film.id}> 
+                  <FilmCard film={film} />
+              </div>
+          ))}
+        </div>
+        <TrendingLists trendingMoviesDay={topTrendingMoviesDay} trendingMoviesWeek={topTrendingMoviesWeek} />
       </div>
-    </div>
+    </FilmsLayOut>
   );
 };
 
@@ -78,10 +95,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     `films/${id}/related`
   );
 
+  const { data:trendingMovies } =  await filmsApi.get<FilmResult[]>('/films/trending/movies'); 
+
+
   return {
     props: {
       film: data,
       relatedFilms,
+      trendingMovies
     },
   };
 };

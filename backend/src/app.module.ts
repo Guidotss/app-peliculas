@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CommonModule } from './common/common.module';
-import { UsersModule } from './users/users.module';
 import { FilmsModule } from './films/films.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './auth/users/users.module';
 
 @Module({
   imports: [
@@ -13,8 +14,9 @@ import { FilmsModule } from './films/films.module';
       useUnifiedTopology: true,
     }),
     CommonModule,
-    UsersModule,
     FilmsModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],

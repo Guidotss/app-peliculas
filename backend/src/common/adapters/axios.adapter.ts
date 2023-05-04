@@ -7,7 +7,7 @@ import { HttpAdapter } from '../interfaces/http-adapter.interface';
 export class AxiosAdapter implements HttpAdapter {
   private readonly axiosInstance: AxiosInstance = axios;
   public async get<T>(url: string): Promise<T> {
-    try {
+    try { 
       const { data } = await this.axiosInstance.get(url);
       return data;
     } catch (err) {

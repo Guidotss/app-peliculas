@@ -1,10 +1,16 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { AxiosAdapter } from 'src/common/adapters/axios.adapter';
 import { Film, FilmResult } from './interfaces/film.interface';
 
+
+
 @Injectable()
 export class FilmsService {
-  constructor(private readonly http: AxiosAdapter) {}
+  private readonly logger = new Logger(FilmsService.name); 
+
+  constructor(
+    private readonly http: AxiosAdapter
+  ) {}
 
   public async findAll(id?:string) {
     try {
@@ -33,7 +39,7 @@ export class FilmsService {
 
   public async findRelatedFilms(id: string) { 
     try { 
-      const data = await this.http.get<Film>(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`)
+      const data = await this.http.get<Film>(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}&language=es-ES&page=1`);
       return data.results;
 
     }catch(error){ 
@@ -41,11 +47,27 @@ export class FilmsService {
     }
   }
 
+  public async getTrendingFilms() { 
+    try{
+      
+      const trendingDay = await this.http.get<Film>(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.TMDB_API_KEY}&language=es-ES&page=1`);
+      const trendingWeek = await this.http.get<Film>(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.TMDB_API_KEY}&language=es-ES&page=1`);
+      
+      return {
+        trendingDay: trendingDay.results,
+        trendingWeek: trendingWeek.results
+      }
+
+    }catch(error){  
+      this.handleErrors(error); 
+    }
+  }
+
 
   private handleErrors(error: any) {
-    console.log(error);
+    this.logger.error(error);
     throw new InternalServerErrorException(
-      'An error has ocurred while trying to get the films',
+      `An error has ocurred while trying to get the films`
     );
   }
 }

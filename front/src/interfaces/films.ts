@@ -20,6 +20,8 @@ export interface FilmResult {
   video: boolean;
   vote_average: number;
   genres: FilmsGenres[]; 
+  original_name: string;
+  first_air_date: string;
 }
 
 interface FilmsGenres { 
