@@ -9,7 +9,7 @@ export class CreateUserDto {
 
     @IsString()
     @IsEmail()
-    readonly emai: string; 
+    readonly email: string; 
 
     @IsString()
     @MinLength(6)
