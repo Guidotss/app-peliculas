@@ -13,6 +13,10 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,PATCH,POST,DELETE',
+  });
 
   await app.listen(+process.env.PORT || 3002);
   logger.log(`Application is running on: ${await app.getUrl()}`);
