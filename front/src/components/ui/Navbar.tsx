@@ -4,11 +4,16 @@ import { useRouter } from "next/router";
 import { AuthContext, UiContext } from "@/context";
 
 export const Navbar = () => {
+
   const { setTiping } = useContext(UiContext);
   const { logout } = useContext(AuthContext);
 
   const router = useRouter();
   const condition = router.pathname === "/";
+
+  
+
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTiping(e.target.value);
