@@ -7,6 +7,7 @@ interface AuthContextProps {
 
     login: (email:string, password:string) => Promise<boolean | undefined>;
     registerUser: ( name:string, email:string, password:string ) => Promise<boolean | undefined>;
+    logout: () => void; 
 }
 
 

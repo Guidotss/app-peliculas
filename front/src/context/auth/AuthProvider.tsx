@@ -1,4 +1,4 @@
-import { FC, useReducer } from 'react'; 
+import { FC, useEffect, useReducer } from 'react'; 
 import Cookies from 'js-cookie';
 import { AuthContext, authReducer } from './'; 
 import { filmsApi } from '@/api';
@@ -31,6 +31,10 @@ const AUTH_INITIAL_STATE: AuthState = {
 export const AuthProvider:FC<AuthProviderProps> = ({ children }) => {
     const [state, dispatch] = useReducer( authReducer, AUTH_INITIAL_STATE); 
 
+    useEffect(() => {
+        revalidateToken();
+    },[])
+
     const login = async (email:string, password:string) => { 
         try{
             const { data } = await filmsApi.post<User>('/auth/login', { email, password });
@@ -42,6 +46,7 @@ export const AuthProvider:FC<AuthProviderProps> = ({ children }) => {
             console.log(error)
             Cookies.remove('token');
             dispatch({ type: '[AUTH] - Logout' });
+            return false; 
         }
     }
 
@@ -58,15 +63,43 @@ export const AuthProvider:FC<AuthProviderProps> = ({ children }) => {
             dispatch({ type: '[AUTH] - Logout' });
             return false; 
         }
-        return false;
     }
+
+
+    const revalidateToken = async () => {
+        const token = Cookies.get('token'); 
+        if(!token){
+            dispatch({ type: '[AUTH] - Logout' });
+        }
+
+        try{
+            const { data } = await filmsApi.post<User>('auth/validateToken',{token}); 
+            Cookies.set('token', data.access_token);
+            dispatch({
+                type: '[AUTH] - Login',
+                payload: data
+            }); 
+
+        }catch(error){
+            console.log(error);
+            Cookies.remove('token'); 
+            dispatch({ type: '[AUTH] - Logout' });
+        }
+    }
+
+    const logout = () => {
+        Cookies.remove('token'); 
+        dispatch({ type: '[AUTH] - Logout' });
+    }
+
 
     return ( 
         <AuthContext.Provider value={{
             ...state,
 
             login,
-            registerUser
+            registerUser,
+            logout,
         }}>
             { children }
         </AuthContext.Provider>
